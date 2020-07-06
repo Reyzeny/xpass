@@ -189,7 +189,8 @@ export default {
     },
     showError(data) {
       this.authenticationError = true;
-      this.authenticationErrorText = data.data[0];
+      const [message] = data.data;
+      this.authenticationErrorText = message;
     },
     showInternetProblem() {
       this.authenticationError = true;

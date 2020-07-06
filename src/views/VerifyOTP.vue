@@ -53,9 +53,15 @@ export default {
   name: 'VerifyOTP',
   beforeRouteEnter(to, from, next) {
     if (to.params.email) {
-      next((vm) => { vm.email = to.params.email; });
+      // next((vm) => { vm.email = to.params.email; });
+      next();
     } else {
       next({ path: constant.SignupRouteName });
+    }
+  },
+  created() {
+    if (this.$route.params.email) {
+      this.email = this.$route.params.email;
     }
   },
   data() {

@@ -15,7 +15,7 @@
                 </div>
                 <div class="d-flex align-items-center">
                   <p class="balance mb-0">=N= {{userBalance}}</p>
-                  <md-button class="md-primary md-raised" @click="showFundDialog = true">Fund</md-button>                  
+                  <md-button class="md-primary md-raised" @click="showFundDialog = true">Fund</md-button>
                   <md-dialog :md-active.sync="showFundDialog">
                     <md-dialog-title>How much would you like to fund?</md-dialog-title>
                     <md-content>
@@ -36,10 +36,8 @@
                       <md-button type="submit" class="md-primary" :disabled="sending" @click="showPaystack">Continue</md-button>
                     </md-dialog-actions>
                   </md-dialog>
-                </div> 
+                </div>
               </md-card><br>
-
-
 
               <md-card class="card">
                 <div class="d-flex flex-wrap justify-content-between">
@@ -52,7 +50,6 @@
                 </div>
               </md-card>
 
-
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -62,10 +59,10 @@
 <script>
 import network from '@/network';
 import routes from '@/network/routes';
-import { validationMixin } from 'vuelidate'
-  import {
-    required,
-  } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate';
+import {
+  required,
+} from 'vuelidate/lib/validators';
 
 export default {
   mixins: [validationMixin],
@@ -89,7 +86,7 @@ export default {
       amount: {
         required,
       },
-    }
+    },
   },
   created() {
     this.loadCategories();
@@ -102,17 +99,18 @@ export default {
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
       if (field) {
-          return {
-            'md-invalid': field.$invalid && field.$dirty
-          }
-        }
+        return {
+          'md-invalid': field.$invalid && field.$dirty,
+        };
+      }
+      return {};
     },
-    validateUser () {
-        this.$v.$touch();
+    validateUser() {
+      this.$v.$touch();
 
-        if (!this.$v.$invalid) {
-          this.fundWallet();
-        }
+      if (!this.$v.$invalid) {
+        this.fundWallet();
+      }
     },
     fundWallet() {
 
@@ -122,7 +120,7 @@ export default {
       this.loading = true;
       network.get(routes.categories)
         .then((response) => {
-          let responseData = response.data.body;
+          const responseData = response.data.body;
           console.log('response data is ', responseData);
           this.categories = responseData;
         })
@@ -132,9 +130,9 @@ export default {
     },
     showPaystack() {
 
-    }
+    },
   },
-  
+
 };
 </script>
 
