@@ -1,10 +1,12 @@
-const express = require('express');
-const app = express();
+var history = require('connect-history-api-fallback');
 
-// Serve all the files in '/dist' directory
-app.use(express.static('dist'));
-
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+var express = require('express')
+var path = require('path')
+var serveStatic = require('serve-static')
+app = express()
+//add this middleware
+app.use(history());    
+app.use(express.static(path.join(__dirname, 'dist')));
+var port = process.env.PORT || 5000
+app.listen(port)
+console.log('server started '+ port) 
