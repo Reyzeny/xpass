@@ -9,12 +9,12 @@
                         <div class="title-heading mt-4">
                             <div class="alert alert-transparent alert-pills shadow" role="alert">
                                 <span class="badge badge-pill badge-primary mr-1">New</span>
-                                <span class="content">New Added Modern and Classic App Showcase</span>
+                                <span class="content">Pay with card, ussd</span>
                             </div>
-                            <h1 class="heading mb-3">We build best apps that users love</h1>
-                            <p class="para-desc text-muted">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
+                            <h1 class="heading mb-3">The best way to pay your bills</h1>
+                            <p class="para-desc text-muted">Xpass brings a faster way to pay your bills from your convenience with modern and digital financial services.</p>
                             <div class="mt-4 pt-2">
-                                <a href="javascript:void(0)" class="btn btn-primary mb-2 mr-2">Install Now</a>
+                                <router-link to="/dashboard"><button class="btn btn-primary mb-2 mr-2">Get started</button></router-link>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -23,9 +23,9 @@
                             <div class="bg-app-shape position-relative">
                                 <img src="@/assets/images/classic01.png" class="img-fluid mover mx-auto d-block" alt="">
                             </div>
-                            <div class="app-images d-none d-md-block">
+                            <!-- <div class="app-images d-none d-md-block">
                                 <img src="@/assets/images/calender.png" class="img-fluid" alt="">
-                            </div>
+                            </div> -->
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -38,9 +38,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">App Features</h4>
-                            <p class="text-muted para-desc mb-0 mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                        <div class="section-title mb-4 pb-2 pt-5">
+                            <h2 class="title mb-4">What can you do on Xpass?</h2>
+                            <!-- <p class="text-muted para-desc mb-0 mx-auto">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p> -->
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -54,8 +54,8 @@
                                         <i data-feather="monitor" class="fea icon-ex-md text-primary"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="title">Use On Any Device</h4>
-                                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                                        <h4 class="title">Buy Airtime</h4>
+                                        <p class="text-muted para mb-0">Credit your phone number with airtime of any value on Airtel, MTN, 9mobile and Glo.</p>
                                     </div>
                                 </div>
                             </div><!--end col-->
@@ -66,8 +66,8 @@
                                         <i data-feather="feather" class="fea icon-ex-md text-primary"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="title">Feather Icons</h4>
-                                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                                        <h4 class="title">Buy Data</h4>
+                                        <p class="text-muted para mb-0">Purchase mobile data or bundle on any network of your choice on Airtel, MTN, 9mobile and Glo.</p>
                                     </div>
                                 </div>
                             </div><!--end col-->
@@ -78,8 +78,8 @@
                                         <i data-feather="eye" class="fea icon-ex-md text-primary"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="title">Retina Ready</h4>
-                                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                                        <h4 class="title">Pay for your cable</h4>
+                                        <p class="text-muted para mb-0">Purchase your cable subscription for DSTV, GOTV, Startimes and so on via xpass.</p>
                                     </div>
                                 </div>
                             </div><!--end col-->
@@ -90,8 +90,8 @@
                                         <i data-feather="user-check" class="fea icon-ex-md text-primary"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="title">W3c Valid Code</h4>
-                                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                                        <h4 class="title">Pay Utility Bills</h4>
+                                        <p class="text-muted para mb-0">Pay your electricity bill, waste bill, and other utility bills on xpass.</p>
                                     </div>
                                 </div>
                             </div><!--end col-->
@@ -102,20 +102,8 @@
                                         <i data-feather="smartphone" class="fea icon-ex-md text-primary"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="title">Fully Responsive</h4>
-                                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-
-                            <div class="col-md-6 col-12">
-                                <div class="media features pt-4 pb-4">
-                                    <div class="icon text-center rounded-circle text-primary mr-3 mt-2">
-                                        <i data-feather="heart" class="fea icon-ex-md text-primary"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="title">Browser Compatibility</h4>
-                                        <p class="text-muted para mb-0">Composed in a pseudo-Latin language which more or less pseudo-Latin language corresponds.</p>
+                                        <h4 class="title">Pay for internet services</h4>
+                                        <p class="text-muted para mb-0">Purchase your internet data plans on any network via xpass.</p>
                                     </div>
                                 </div>
                             </div><!--end col-->
@@ -132,29 +120,20 @@
 
                 <!-- Section Start -->
         <section class="section overflow-hidden">
-
             <div class="container mt-100 mt-60">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-5">
                         <div class="app-feature-shape-left position-relative">
                             <div class="text-center text-md-left">
-                                <img src="@/assets/images/classic02.png" class="img-fluid" alt="">
+                                <img src="@/assets/images/classic02.png" class="img-fluid mover" alt="">
                             </div>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-lg-6 col-md-7 mt-5 mt-sm-0">
                         <div class="section-title">
-                            <h1 class="title mb-3">We Build High Performing <br> Application</h1>
-                            <p class="para-desc text-muted">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
-                            <ul class="list-unstyled feature-list text-muted">
-                                <li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Digital Marketing Solutions for Tomorrow</li>
-                                <li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Our Talented & Experienced Marketing Agency</li>
-                                <li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Create your own skin to match your brand</li>
-                            </ul>
-                            <div class="mt-4">
-                                <a href="javascript:void(0)" class="mt-3 text-primary">Find Out More <i class="mdi mdi-chevron-right"></i></a>
-                            </div>
+                            <h1 class="title mb-3">Safe &amp; Secure</h1>
+                            <p class="para-desc text-muted">Your transactions right from funding your wallet to purchases are processed securely on xpass.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
@@ -164,18 +143,15 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-7 order-2 order-md-1 mt-5 mt-sm-0">
                         <div class="section-title">
-                            <h1 class="title mb-3">Easy And Best Solution <br> For Your App</h1>
-                            <p class="para-desc text-muted">Launch your Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet eligendi expedita ducimus fuga sed possimus veritatis eum voluptates. Ab ex odio sed atque. Quam delectus, voluptatibus rem harum nihil minus. campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
-                            <div class="mt-4">
-                                <a href="javascript:void(0)" class="btn btn-primary">Learn More <i class="mdi mdi-chevron-right"></i></a>
-                            </div>
+                            <h1 class="title mb-3">Easy And Best Solution <br> To Pay Your Bills</h1>
+                            <p class="para-desc text-muted">With a beautiful and easy to use interface and navigation, our platform provides easy navigation and clear actions that makes it easy for users to carry out their transactions efficiently.</p>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-lg-6 col-md-5 order-1 order-md-2">
                         <div class="app-feature-shape-right position-relative">
                             <div class="text-center text-md-right">
-                                <img src="@/assets/images/classic03.png" class="img-fluid" alt="">
+                                <img src="@/assets/images/classic03.png" class="img-fluid mover" alt="">
                             </div>
                         </div>
                     </div><!--end col-->
@@ -187,138 +163,22 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="app-feature-shape-left position-relative">
                             <div class="text-center text-md-left">
-                                <img src="@/assets/images/classic04.png" class="img-fluid" alt="">
+                                <img src="@/assets/images/classic04.png" class="img-fluid mover" alt="">
                             </div>
                         </div>
                     </div><!--end col-->
 
                     <div class="col-lg-6 col-md-7 mt-5 mt-sm-0">
                         <div class="section-title">
-                            <h1 class="title mb-3">Beautiful, Simple & <br> Easy to Use</h1>
-                            <p class="para-desc text-muted">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
-                            <ul class="list-unstyled feature-list text-muted">
-                                <li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Digital Marketing Solutions for Tomorrow</li>
-                                <li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Our Talented & Experienced Marketing Agency</li>
-                                <li><i data-feather="check-circle" class="fea icon-sm text-success mr-2"></i>Create your own skin to match your brand</li>
-                            </ul>
-                            <div class="mt-4">
-                                <a href="javascript:void(0)" class="btn btn-primary">Read More <i class="mdi mdi-chevron-right"></i></a>
-                            </div>
+                            <h1 class="title mb-3">Awesome Customer Support</h1>
+                            <p class="para-desc text-muted">We are here for you! Our contact lines are open 24/7 to help and support you incase you face any challenges with using our platform or performing a transaction.</p>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
-
-            <div class="container mt-100 mt-60 pb-md-5 mb-md-5">
-                <div class="row justify-content-center">
-                    <div class="col-12 text-center">
-                        <div class="section-title mb-4 pb-2">
-                            <span class="badge badge-pill badge-success mb-2">Reviews</span>
-                            <h4 class="title mb-4">What our users says !</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 mt-4">
-                        <div id="customer-testi" class="owl-carousel owl-theme">
-                            <div class="media customer-testi m-2">
-                                <img src="images/client/01.jpg" class="avatar avatar-small mr-3 rounded shadow" alt="">
-                                <div class="media-body content p-3 shadow rounded bg-white position-relative">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    </ul>
-                                    <p class="text-muted mt-2">" It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. "</p>
-                                    <h6 class="text-primary">- Thomas Israel <small class="text-muted">C.E.O</small></h6>
-                                </div>
-                            </div>
-
-                            <div class="media customer-testi m-2">
-                                <img src="images/client/02.jpg" class="avatar avatar-small mr-3 rounded shadow" alt="">
-                                <div class="media-body content p-3 shadow rounded bg-white position-relative">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
-                                    </ul>
-                                    <p class="text-muted mt-2">" One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others. "</p>
-                                    <h6 class="text-primary">- Barbara McIntosh <small class="text-muted">M.D</small></h6>
-                                </div>
-                            </div>
-
-                            <div class="media customer-testi m-2">
-                                <img src="images/client/03.jpg" class="avatar avatar-small mr-3 rounded shadow" alt="">
-                                <div class="media-body content p-3 shadow rounded bg-white position-relative">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    </ul>
-                                    <p class="text-muted mt-2">" The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century. "</p>
-                                    <h6 class="text-primary">- Carl Oliver <small class="text-muted">P.A</small></h6>
-                                </div>
-                            </div>
-
-                            <div class="media customer-testi m-2">
-                                <img src="images/client/04.jpg" class="avatar avatar-small mr-3 rounded shadow" alt="">
-                                <div class="media-body content p-3 shadow rounded bg-white position-relative">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    </ul>
-                                    <p class="text-muted mt-2">" According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero. "</p>
-                                    <h6 class="text-primary">- Christa Smith <small class="text-muted">Manager</small></h6>
-                                </div>
-                            </div>
-
-                            <div class="media customer-testi m-2">
-                                <img src="images/client/05.jpg" class="avatar avatar-small mr-3 rounded shadow" alt="">
-                                <div class="media-body content p-3 shadow rounded bg-white position-relative">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    </ul>
-                                    <p class="text-muted mt-2">" There is now an abundance of readable dummy texts. These are usually used when a text is required. "</p>
-                                    <h6 class="text-primary">- Dean Tolle <small class="text-muted">Developer</small></h6>
-                                </div>
-                            </div>
-
-                            <div class="media customer-testi m-2">
-                                <img src="images/client/06.jpg" class="avatar avatar-small mr-3 rounded shadow" alt="">
-                                <div class="media-body content p-3 shadow rounded bg-white position-relative">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    </ul>
-                                    <p class="text-muted mt-2">" Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts. "</p>
-                                    <h6 class="text-primary">- Jill Webb <small class="text-muted">Designer</small></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!---end container-->
         </section><!--end section-->
         <!-- Section End -->
-
+        <subscribe-footer/>
         <!-- Section End -->
     </section>
 </template>
@@ -362,35 +222,105 @@ img{
     vertical-align: middle;
     border-style: none;
 }
-.classic-app-image .bg-app-shape:after, .classic-saas-image .bg-saas-shape:after {
-    box-shadow: 0 0 40px rgba(47, 85, 212, 0.5);
-}
-.classic-app-image .bg-app-shape:after, .classic-saas-image .bg-saas-shape:after {
-    background-color: #2f55d4 !important;
-}
-.classic-app-image .bg-app-shape:after, .classic-saas-image .bg-saas-shape:after {
-    content: " ";
-    position: absolute;
-    z-index: -1;
+.classic-app-image .bg-app-shape {
+    z-index: 0;
 }
 .classic-app-image .bg-app-shape:after {
-    bottom: 3rem;
-    left: -8rem;
-    width: 55rem;
-    height: 35rem;
-    border-radius: 20rem;
-    -webkit-transform: rotate(120deg);
-    transform: rotate(120deg);
-    opacity: 0.9;
+  bottom: 3rem;
+  left: -8rem;
+  width: 55rem;
+  height: 35rem;
+  border-radius: 20rem;
+  -webkit-transform: rotate(120deg);
+          transform: rotate(120deg);
+  opacity: 0.9;
 }
+
 .classic-app-image .app-images {
-    position: absolute;
-    bottom: 60px;
-    right: -20px;
+  position: absolute;
+  bottom: 60px;
+  right: -20px;
 }
+
+.classic-app-image .bg-app-shape:after,
+.classic-saas-image .bg-saas-shape:after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+}
+
+.classic-app-image .bg-app-shape:after,
+.classic-saas-image .bg-saas-shape:after {
+  -webkit-box-shadow: 0 0 40px rgba(47, 85, 212, 0.5);
+          box-shadow: 0 0 40px rgba(47, 85, 212, 0.5);
+  background-color: #2f55d4;
+}
+.app-feature-shape-right:after,
+.app-feature-shape-left:after {
+  bottom: 0rem;
+  width: 30rem;
+  height: 40rem;
+  border-radius: 10rem;
+}
+
+.app-feature-shape-right:after {
+  left: 10rem;
+  -webkit-transform: rotate(150deg);
+          transform: rotate(150deg);
+}
+
+.app-feature-shape-left:after {
+  right: 10rem;
+  -webkit-transform: rotate(210deg);
+          transform: rotate(210deg);
+}
+.app-feature-shape-right:after,
+.app-feature-shape-left:after,
+.saas-feature-shape-left:after,
+.saas-feature-shape-right:after,
+.social-feature-left:after,
+.social-feature-right:after {
+  background: rgba(47, 85, 212, 0.1);
+  -webkit-box-shadow: 0 0 40px rgba(47, 85, 212, 0.1);
+          box-shadow: 0 0 40px rgba(47, 85, 212, 0.1);
+}
+
+/* .app-feature-shape-right,
+.app-feature-shape-left, {
+    z-index: -1;
+} */
+.app-feature-shape-left img, .app-feature-shape-right img{
+    position: relative;
+    z-index: 2;
+}
+.app-feature-shape-right:after,
+.app-feature-shape-left:after,
+.saas-feature-shape-left:after,
+.saas-feature-shape-right:after,
+.social-feature-left:after,
+.social-feature-right:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+}
+
+.section-title .title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 @media (min-width: 768px){
     .d-md-block {
         display: block !important;
     }
+    .app-feature-shape-right:after {
+        /* left: 0; */
+    }
+    .app-feature-shape-left:after {
+        /* right: 0; */
+    }
+    .section {
+    padding: 60px 0;
+  }
 }
 </style>

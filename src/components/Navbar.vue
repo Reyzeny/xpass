@@ -3,7 +3,7 @@
         <div>
             <vs-navbar v-model="activeItem" class="nabarx">
                 <div slot="title">
-                    <vs-navbar-title><router-link to="/"><img src="@/assets/images/logo-dark.png" height="1" alt="Xpass Logo"/></router-link></vs-navbar-title>
+                    <vs-navbar-title><router-link to="/"><img src="@/assets/images/logo-dark.png" class="logo" alt="Xpass Logo"/></router-link></vs-navbar-title>
                 </div>
                 <vs-navbar-item index="0">
                     <router-link class="btn" to="/">Home</router-link>
@@ -53,6 +53,10 @@ export default {
 </script>
 
 <style scoped>
+.logo {
+    width: 15rem;
+    height: auto;
+}
 #topnav .nabarx{
   padding: 1% 4% 1% 10%;
 }

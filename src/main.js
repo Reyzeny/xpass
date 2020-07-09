@@ -8,15 +8,30 @@ import 'vuesax/dist/vuesax.css';
 import {
   MdButton, MdSwitch, MdDialog, MdContent, MdCard, MdTabs, MdField, MdProgress,
 } from 'vue-material/dist/components';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faInbox } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  faFacebook, faInstagram, faTwitter, faLinkedin,
+} from '@fortawesome/free-brands-svg-icons';
 import router from './router';
 import store from './store';
 import navbar from './components/Navbar.vue';
+import subscribefooter from './components/SubscribeFooter.vue';
 import App from './App.vue';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
 
+library.add(faFacebook);
+library.add(faInstagram);
+library.add(faTwitter);
+library.add(faLinkedin);
+library.add(faInbox);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
 Vue.config.productionTip = false;
 Vue.component('navbar', navbar);
+Vue.component('subscribe-footer', subscribefooter);
 Vue.use(Vuesax, {
 
 });
