@@ -12,11 +12,13 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@babel/core": "^7.11.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-brands-svg-icons": "^5.13.1",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
     "bootstrap": "^4.5.0",
     "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.6.5",
