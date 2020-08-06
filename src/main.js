@@ -14,9 +14,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   faFacebook, faInstagram, faTwitter, faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
+import vuetify from './plugins/vuetify';
 import router from './router';
 import store from './store';
 import navbar from './components/Navbar.vue';
+import navbarwithside from './components/NavbarWithSide.vue';
 import subscribefooter from './components/SubscribeFooter.vue';
 import App from './App.vue';
 import 'vue-material/dist/vue-material.min.css';
@@ -28,9 +32,11 @@ library.add(faTwitter);
 library.add(faLinkedin);
 library.add(faInbox);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(Vuetify);
 
 Vue.config.productionTip = false;
 Vue.component('navbar', navbar);
+Vue.component('navbarwithside', navbarwithside);
 Vue.component('subscribe-footer', subscribefooter);
 Vue.use(Vuesax, {
 
@@ -47,5 +53,6 @@ Vue.use(MdProgress);
 new Vue({
   router,
   store,
+  vuetify,
   render: (h) => h(App),
 }).$mount('#app');

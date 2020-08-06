@@ -1,4 +1,5 @@
 <template>
+    <div>
     <div class="bg bg-circle-gradiant">
         <navbar/>
         <!-- Hero Start -->
@@ -89,6 +90,7 @@
             </div> <!--end container-->
         </section><!--end section-->
         <!-- Hero End -->
+    </div>
     </div>
 </template>
 <script>
@@ -218,11 +220,17 @@ export default {
 .bg-circle-gradiant {
   background: radial-gradient(circle at 50% 50%, rgba(47, 85, 212, 0.1) 0%, rgba(47, 85, 212, 0.1) 33.333%, rgba(47, 85, 212, 0.3) 33.333%, rgba(47, 85, 212, 0.3) 66.666%, rgba(47, 85, 212, 0.5) 66.666%, rgba(47, 85, 212, 0.5) 99.999%);
 }
+.container{
+    margin-top: 20rem;
+}
 @media (max-width: 767px) {
   .bg-home, .bg-half-170, .bg-half-260, .main-slider .slides .bg-slider, .bg-marketing {
     padding: 50px 0;
     height: auto;
     margin-top: 0%;
+  }
+  .container {
+      margin-top: 0;
   }
 }
 </style>

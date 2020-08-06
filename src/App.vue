@@ -1,18 +1,24 @@
 <template>
-  <div id="app">
-    <div id="preloader">
-      <div id="status">
-        <div class="spinner">
-          <div class="double-bounce1"></div>
-          <div class="double-bounce2"></div>
-        </div>
-      </div>
-    </div>
-    <transition>
-      <router-view/>
-    </transition>
+  <div>
+    <v-app>
+
+      <v-main>
+        <router-view/>
+      </v-main>
+    </v-app>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      userAuthenticated: true,
+    };
+  },
+};
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&amp;display=swap");
@@ -65,12 +71,10 @@
   background-image: linear-gradient(90deg, #2eca8b, #2f55d4, #2eca8b);
   opacity: 0.5;
 }
-
 /* Animations */
 .mover {
   animation: mover 1s infinite alternate;
 }
-
 @keyframes mover {
   0% {
     -webkit-transform: translateY(0);
@@ -81,5 +85,4 @@
     transform: translateY(5px);
   }
 }
-
 </style>

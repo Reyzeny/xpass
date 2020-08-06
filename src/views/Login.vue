@@ -148,7 +148,9 @@ export default {
             authState: true,
             token: responseData.auth_token,
             email: responseData.email,
-            bvn: responseData.bvn_status,
+            firstName: responseData.name,
+            lastName: '',
+            bvn_status: responseData.bvn_status,
             is_account_verified: responseData.is_account_verified,
           };
           //

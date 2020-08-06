@@ -36,6 +36,30 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: constant.ServiceRoute,
+    name: constant.ServiceRouteName,
+    component: () => import('@/views/Services.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: constant.ProfileRoute,
+    name: constant.ProfileRouteName,
+    component: () => import('@/views/Profile.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: constant.LogoutRoute,
+    name: constant.LogoutRouteName,
+    component: () => import('@/views/Logout.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ];
 
 const topScrollBehaviour = () => ({ x: 0, y: 0 });

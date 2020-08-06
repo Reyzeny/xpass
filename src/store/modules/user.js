@@ -15,6 +15,9 @@ export default {
         const user = {
           token: data.token,
           email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          bvn_status: data.bvn_status,
         };
         console.log('setting on localStorage');
         console.log('user data to save is ', user);
@@ -29,11 +32,19 @@ export default {
       commit('SET_AUTHENTICATED_STATE', data);
       console.log('commited successfully');
     },
+    logoutUser() {
+      console.log('clearing storage');
+      localStorage.clear();
+    },
   },
   getters: {
     isAuthenticated: () => {
       const userData = JSON.parse(localStorage.getItem(constant.userData));
       return userData !== null && userData[constant.token] !== null;
+    },
+    userData: () => {
+      const user = JSON.parse(localStorage.getItem(constant.userData));
+      return user;
     },
   },
 };

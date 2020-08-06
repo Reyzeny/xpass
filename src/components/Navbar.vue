@@ -1,53 +1,31 @@
 <template>
-    <header id="topnav" class="defaultscroll sticky">
-        <div>
-            <vs-navbar v-model="activeItem" class="nabarx">
-                <div slot="title">
-                    <vs-navbar-title><router-link to="/"><img src="@/assets/images/logo-dark.png" class="logo" alt="Xpass Logo"/></router-link></vs-navbar-title>
-                </div>
-                <vs-navbar-item index="0">
-                    <router-link class="btn" to="/">Home</router-link>
-                </vs-navbar-item>
-                <vs-navbar-item index="1">
-                    <router-link class="btn" to="/">Products</router-link>
-                </vs-navbar-item>
-                <vs-navbar-item index="2">
-                    <router-link class="btn" to="/">About Us</router-link>
-                </vs-navbar-item>
-                <vs-navbar-item index="3">
-                    <router-link class="btn" to="/">FAQs</router-link>
-                </vs-navbar-item>
-                <vs-navbar-item index="4">
-                    <div v-if="!isAuthenticated">
-                    <router-link to="/login" class="btn btn-secondary">Login</router-link>
-                    </div>
-                </vs-navbar-item>
-                <vs-navbar-item index="5">
-                    <div  v-if="!isAuthenticated">
-                        <router-link to="/signup" tag="button" class="btn btn-primary">Sign Up</router-link>
-                    </div>
-                </vs-navbar-item>
-                <vs-navbar-item index="6">
-                    <div  v-if="isAuthenticated">
-                        <router-link to="/dashboard" tag="button" class="btn btn-primary">My Account</router-link>
-                    </div>
-                </vs-navbar-item>
-            </vs-navbar>
-        </div>
+    <header class="defaultscroll sticky">
+        <v-app-bar app color="primary" dark clipped-left>
+            <v-toolbar-title><router-link to="/" class="nav-home-title"> Xpass </router-link> </v-toolbar-title>
+            <div class="d-flex align-center">
+                <!-- <v-img alt="Vuetify Logo" class="shrink mr-2" contain src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png" transition="scale-transition" width="40"/> -->
+                <!-- <v-img alt="Vuetify Name" class="shrink mt-1 hidden-sm-and-down" contain min-width="100" src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png" width="100"/> -->
+            </div>
+            <v-spacer></v-spacer>
+            <v-btn href="/" style="color: white;" text>
+                <span class="mr-2 white-text">Home</span>
+            </v-btn>
+            <v-btn href="/login" style="color: white;" text>
+                <span class="mr-2 white-text">Login</span>
+            </v-btn>
+            <v-btn href="/signup" style="color: white;" text>
+                <span class="mr-2">Signup</span>
+            </v-btn>
+        </v-app-bar>
     </header>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   data() {
     return {
-      activeItem: 0,
+      userAuthenticated: true,
     };
-  },
-  computed: {
-    ...mapGetters('user', ['isAuthenticated']),
   },
 };
 </script>
@@ -67,4 +45,9 @@ export default {
     margin-left: 0.2rem;
     margin-right: 0.2rem;
 }
+.nav-home-title {
+    color: white !important;
+    text-decoration: none !important;
+}
+
 </style>
