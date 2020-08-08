@@ -28,6 +28,9 @@
                         <v-text-field v-model="narration" :label="'Narration'" single-line></v-text-field>
                     </div>
                 </div>
+                <div>
+                  <p v-if="responseError" class="text-danger text-center">{{ responseErrorMessage }}</p>
+                </div>
                 <div class="row">
                     <div class="col-md-12 d-flex flex-row-reverse">
                         <v-btn color="primary" :loading="sendingMoney" :disabled="sendingMoney" @click="sendMoney">Send Money Now</v-btn>
@@ -67,6 +70,8 @@ export default {
     snackbarText: '',
 
     sendingMoney: false,
+    responseError: false,
+    responseErrorMessage: '',
   }),
   created() {
     this.fetchBankList();
@@ -155,9 +160,11 @@ export default {
           this.sendingMoney = false;
           console.log('funds transfer response is ', response);
         })
-        .then((error) => {
+        .catch((error) => {
           this.sendingMoney = false;
           console.log('funds transfer error is ', error.response);
+          this.responseError = true;
+          this.responseErrorMessage = error.response.data.data;
         });
       return true;
     },
@@ -166,6 +173,7 @@ export default {
       this.showSelectBankError = false;
       this.showBankDetailsError = false;
       this.snackbar = false;
+      this.responseError = false;
     },
     showToast(message) {
       this.snackbarText = message;
@@ -176,7 +184,8 @@ export default {
 </script>
 <style scoped>
 .card-title {
-  font-size: 2.1rem;
+  padding: 1rem;
+  font-size: 1.2rem;
   font-weight: 800;
 }
 .card-subtitle {

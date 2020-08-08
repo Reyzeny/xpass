@@ -25,7 +25,7 @@
                 <!-- <v-img alt="Vuetify Name" class="shrink mt-1 hidden-sm-and-down" contain min-width="100" src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png" width="100"/> -->
             </div>
             <v-spacer></v-spacer>
-            <v-menu bottom origin="center center" transition="scale-transition">
+            <v-menu bottom origin="center center" transition="scale-transition" min-width="200">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn v-bind="attrs" v-on="on" icon>
                         <v-icon>mdi-account</v-icon>
@@ -33,10 +33,10 @@
                 </template>
                 <v-list>
                     <v-list-item>
-                        <v-list-item-title><router-link to="/profile">Profile</router-link></v-list-item-title>
+                        <v-list-item-title><router-link class="link" to="/profile">Profile</router-link></v-list-item-title>
                     </v-list-item>
                     <v-list-item>
-                        <v-list-item-title><router-link to="/logout">Logout</router-link></v-list-item-title>
+                        <v-list-item-title><router-link class="link" to="/logout">Logout</router-link></v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
@@ -62,6 +62,9 @@
 }
 .nav-home-title {
     color: white !important;
+    text-decoration: none !important;
+}
+.link {
     text-decoration: none !important;
 }
 </style>

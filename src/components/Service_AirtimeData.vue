@@ -3,36 +3,32 @@
         <md-card class="card">
             <div class="card-header">{{ specific }}</div>
             <p class="card-subheader">Select Your Provider</p>
-            <!-- <div class="d-flex justify-content-around">
-              <div class="product" v-for="product in products" :key="product.id">
-                <img :src="product.image_url"/>
-                <p class="text-center">{{product.name}}</p>
-              </div>
-            </div>
-            <div class="d-flex justify-content-around">
-              <v-select :items="products[selectedProductId].variation_list" v-model="variationSelected" item-text="name" filled label="Select "></v-select>
-              <md-field>
-                <label for="phone">Enter Phone</label>
-                <md-input type="phone" name="phone" id="phone" autocomplete="phone" v-model="recipientValue" :disabled="disableRecipientValue"/>
-              </md-field>
-              <md-field>
-                <label for="amount">Enter Amount</label>
-                <md-input type="number" name="amount" id="amount" v-model="recipientAmount" :min="recipientValueMinAmount"/>
-              </md-field>
-            </div> -->
             <div class="d-flex flex-wrap justify-content-start">
+                <md-progress-spinner v-if="products.length === 0" class="position-absolute spinner" :md-diameter="100" :md-stroke="10" md-mode="indeterminate"></md-progress-spinner>
                 <div v-for="(item, index) in products" :key="index" :class="{service_container_selected: selectedItem===item, service_container_unselected: selectedItem!==item}" @click="setSelectedItem(item, index)">
-                    <img class="service_image" :src="item.image_url"/>
+                    <img class="service_image" :src="item.image_url"/><br><br>
                     <p>{{ item.name }}</p>
                 </div>
             </div>
-            <div class="d-flex justify-content-between input-wrapper">
-                <v-select v-if="selectedItemVariations.length>0" v-model="selectedVariation" :items="selectedItemVariations" item-text="name" item-value="id" :menu-props="{ top: true, offsetY: true }" :label="selectedItemVariationLabel" return-object></v-select>
-                <v-text-field v-if="biller_identifier_name" v-model="biller_identifier" :label="biller_identifier_name" single-line></v-text-field>
-                <v-text-field v-if="selectedItem" v-model="billing_amount" label="Amount" single-line :readonly="amountReadOnly"></v-text-field>
+            <div class="row input-wrapper mt-2 p-2">
+              <div class="col-md-4" v-if="selectedItemVariations.length>0">
+                <v-select v-model="selectedVariation" :items="selectedItemVariations" item-text="name" item-value="id" :menu-props="{ top: true, offsetY: true }" :label="selectedItemVariationLabel" return-object></v-select>
+                <p v-if="selectedVariationError" class="text-danger">Select an item</p>
+              </div>
+              <div class="col-md-4" v-if="biller_identifier_name">
+                <v-text-field v-model="biller_identifier" :label="biller_identifier_name" single-line></v-text-field>
+                <p v-if="biller_identifier_error" class="text-danger">Enter a valid {{ biller_identifier_name }}</p>
+              </div>
+              <div class="col-md-4" v-if="selectedItem">
+                <v-text-field v-model="billing_amount" label="Amount" single-line :readonly="amountReadOnly"></v-text-field>
+                <p v-if="billing_amount_error" class="text-danger">Enter a valid Amount</p>
+              </div>
             </div>
-            <div class="d-flex flex-row-reverse">
-                <v-btn v-if="selectedItem" large color="primary" @click="submitTransaction">{{ specific }}</v-btn>
+            <div v-if="responseError">
+              <p class="text-danger text-center">{{ responseErrorMessage }}</p>
+            </div>
+            <div class="d-flex flex-row-reverse mt-2 p-2">
+                <v-btn v-if="selectedItem" :loading="submitTransactionLoading" large color="primary" @click="submitTransaction">{{ specific }}</v-btn>
             </div>
         </md-card>
     </section>
@@ -91,14 +87,21 @@ export default {
       selectedItemVariations: [],
       selectedVariation: { id: 0 },
       selectedItemVariationLabel: '',
+      selectedVariationError: false,
 
       biller_identifier: '',
       biller_identifier_name: '',
+      biller_identifier_error: false,
       billing_amount: 0,
+      billing_amount_error: false,
       amountReadOnly: false,
 
       snackbar: false,
       snackbar_text: 'Hello, I\'m a snackbar',
+
+      responseError: false,
+      responseErrorMessage: '',
+      submitTransactionLoading: false,
     };
   },
   created() {
@@ -110,11 +113,14 @@ export default {
       console.log('selected variation is ', val);
       this.amountReadOnly = val.fixed_price === 'yes';
       this.billing_amount = val.amount;
+      this.resetData();
     },
   },
   methods: {
     setSelectedItem(item) {
       console.log('clicked on ', item);
+      this.resetData();
+      this.selectedVariation = { id: 0 };
       this.selectedItem = item;
       this.selectedItemVariationLabel = item.variation_label;
       this.selectedItemVariations = item.variation_list;
@@ -122,24 +128,49 @@ export default {
     },
 
     submitTransaction() {
-
+      this.resetData();
+      if (this.selectedItemVariations.length > 0 && this.selectedVariation.id === 0) {
+        console.log('selectedVariationError');
+        this.selectedVariationError = true;
+        return false;
+      }
+      if (this.biller_identifier_name && !this.biller_identifier) {
+        console.log('biller_identifier_error');
+        this.biller_identifier_error = true;
+        return false;
+      }
+      if (!this.billing_amount || (!this.amountReadOnly && this.billing_amount <= 0)) {
+        console.log('billing_amount_error');
+        this.billing_amount_error = true;
+        return false;
+      }
+      console.log('proceeding');
+      const transactionData = {
+        service_id: this.selectedItem.id,
+        biller_identifier: this.biller_identifier,
+        amount: this.billing_amount,
+        variation_id: this.selectedVariation.id,
+      };
+      console.log('transaction data is ', transactionData);
+      this.submitTransactionLoading = true;
+      network.post(routes.createTransaction, transactionData)
+        .then((response) => {
+          console.log('purcahse response is ', response);
+          this.submitTransactionLoading = false;
+        })
+        .catch((error) => {
+          console.log('purchase error is ', error.response);
+          this.submitTransactionLoading = false;
+          this.responseError = true;
+          this.responseErrorMessage = error.response.data.data;
+        });
+      return true;
     },
-
-    // getServiceById(id) {
-    //   network.get(routes.servicesByID(id))
-    //     .then((response) => {
-    //       console.log('response of service by id is ', response);
-    //     //   let responseData = response.data.data;
-    //     })
-    //     .catch((error) => {
-    //       console.log('error of service by id is ', error.response);
-    //     });
-    // },
-    loadUIForProduct(id) {
-      this.recipientTitle = this.products[id].biller_identifier_name;
-      this.disableRecipientValue = this.products[id].edit_variant_amount === 'no';
-      this.providerImageUrl = this.products[id].image_url;
-      this.recipientValueMinAmount = this.products[id].min_amount;
+    resetData() {
+      this.selectedVariationError = false;
+      this.biller_identifier_error = false;
+      this.billing_amount_error = false;
+      this.responseError = false;
     },
     getServiceByCategory(categoryId) {
       network.get(routes.servicesByCategory(categoryId))
@@ -154,21 +185,21 @@ export default {
           console.log('error of service by category is ', error.response);
         });
     },
-    purchase() {
-      const transactionData = {
-        service_id: this.selected_service_id,
-        biller_identifier: this.phone_number,
-        amount: this.amount,
-        variant_id: 1,
-      };
-      network.post(routes.createTransaction, transactionData)
-        .then((response) => {
-          console.log('create transaction response is ', response);
-        })
-        .catch((error) => {
-          console.log('create transaction error is ', error.response);
-        });
-    },
+    // purchase() {
+    //   const transactionData = {
+    //     service_id: this.selected_service_id,
+    //     biller_identifier: this.phone_number,
+    //     amount: this.amount,
+    //     variant_id: 1,
+    //   };
+    //   network.post(routes.createTransaction, transactionData)
+    //     .then((response) => {
+    //       console.log('create transaction response is ', response);
+    //     })
+    //     .catch((error) => {
+    //       console.log('create transaction error is ', error.response);
+    //     });
+    // },
   },
 };
 </script>
@@ -212,5 +243,8 @@ export default {
   margin: 1rem;
   width: 8rem;
   padding: 1rem;
+}
+.spinner{
+  left: 40%;
 }
 </style>

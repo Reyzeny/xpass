@@ -2,7 +2,7 @@
     <section>
       <navbarwithside/>
       <div>
-        <v-card class="m-2">
+        <v-card class="card">
           <v-card-title class="d-flex justify-content-between">
             <h1>Profile</h1>
             <!-- <v-btn outlined>Edit Profile</v-btn> -->
@@ -104,6 +104,10 @@ export default {
 };
 </script>
 <style scoped>
+.card {
+  margin: 2rem;
+  padding: 2rem;
+}
 .profile-title {
   font-weight: 800 !important;
   font-size: 1rem;

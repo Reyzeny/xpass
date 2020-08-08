@@ -10,12 +10,13 @@
               </div>
               <md-card class="card">`
                 <div class="d-flex justify-content-between">
-                  <p class="available-balance">Your available balance</p>
+                  <p class="available-balance">Your Available Balance</p>
                   <md-switch v-model="showBalance">Show Balance</md-switch>
                 </div>
                 <div class="d-flex align-items-center">
-                  <p class="balance mb-0">=N= {{userBalance}}</p>
-                  <md-button class="md-primary md-raised" @click="showFundDialog = true">Fund</md-button>
+                  <p v-if="showBalance" class="balance mb-0 mr-2">=N= {{formattedUserBalance}}</p>
+                  <p v-else class="balance mb-0 mr-2">=N= XXX XXX</p>
+                  <md-button class="md-primary md-raised ml-2" @click="showFundDialog = true">Fund</md-button>
                   <md-dialog :md-active.sync="showFundDialog">
                     <md-dialog-title>How much would you like to fund?</md-dialog-title>
                     <md-content>
@@ -45,9 +46,10 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6 col-xs-6 service-box">
-                    <router-link :to="{ name:'Service', params:{ categoryId: 1, serviceOption: 'airtime_data', specific:'Buy Airtime' } }">
+                    <router-link class="link" :to="{ name:'Service', params:{ categoryId: 1, serviceOption: 'airtime_data', specific:'Buy Airtime' } }">
                       <div class="service-box-item">
                         <div>
+                          <br>
                           <p class="text-center"><img height="40" width="40" src="@/assets/images/smartphone.svg"/></p>
                           <br>
                           <p>Buy Airtime</p>
@@ -55,9 +57,10 @@
                       </div>
                     </router-link>
                     <br>
-                    <router-link :to="{ name:'Service', params:{ categoryId: 2, serviceOption: 'airtime_data', specific:'Buy Data' } }">
+                    <router-link class="link" :to="{ name:'Service', params:{ categoryId: 2, serviceOption: 'airtime_data', specific:'Buy Data' } }">
                       <div class="service-box-item">
                           <div>
+                            <br>
                             <p class="text-center"><img height="40" width="40" src="@/assets/images/smartphone.svg"/></p>
                             <br>
                             <p>Buy Data</p>
@@ -66,9 +69,10 @@
                     </router-link>
                   </div>
                   <div class="col-md-6 col-xs-6 service-box">
-                    <router-link :to="{ name:'Service', params:{ categoryId: 0, serviceOption: 'bank' } }">
+                    <router-link class="link" :to="{ name:'Service', params:{ categoryId: 0, serviceOption: 'bank' } }">
                       <div class="service-box-item">
                           <div>
+                            <br>
                             <p class="text-center"><img height="40" width="40" src="@/assets/images/bank.svg"/></p>
                             <br>
                             <p>Send Money</p>
@@ -76,9 +80,10 @@
                       </div>
                     </router-link>
                     <br>
-                    <router-link :to="{ name:'Service', params:{ categoryId: 0, serviceOption: 'bills' } }">
+                    <router-link class="link" :to="{ name:'Service', params:{ categoryId: 0, serviceOption: 'bills' } }">
                       <div class="service-box-item">
                           <div>
+                            <br>
                             <p class="text-center"><img height="40" width="40" src="@/assets/images/bill.svg"/></p>
                             <br>
                             <p>Pay Bills</p>
@@ -131,7 +136,7 @@ export default {
       firstName: 'Pelumi',
       lastName: '',
       email: '',
-      userBalance: 0.00,
+      userBalance: '0.00',
       categories: [],
       showBalance: false,
       showFundDialog: false,
@@ -145,16 +150,19 @@ export default {
       amountErrorMessage: '',
     };
   },
+  computed: {
+    formattedUserBalance(){
+      console.log('user ballance in formatted is ', this.userBalance);
+      return parseFloat(this.userBalance).toFixed(2);
+    }
+  },
   created() {
     this.loadUserWallet();
   },
   watch: {
     amount(val) {
-      this.amount = parseFloat(val).toFixed(2);
-      console.log('val is ', val);
-      console.log('final amount is ', this.amount);
+      if (val <= 0) return false;
       this.paystackFundAmount = parseInt(parseFloat(val).toFixed(2) * 100);
-      console.log('paystack fund amount is ', this.paystackFundAmount);
     }
   },
   mounted() {
@@ -241,7 +249,7 @@ export default {
         .then((response) => {
           console.log('user balance response is ', response);
           let responseData = response.data.data;
-          this.userBalance = responseData.balance;
+          this.userBalance = responseData;
         })
         .catch((error) => {
           console.log('error fetch user balance is ', error.response);
@@ -286,8 +294,10 @@ export default {
 }
 .available-balance {
   margin: 16px 16px 16px 0;
-  font-weight: 400;
-  color: #9E9E9E;
+  font-weight: 800;
+  font-size: 14px;
+  /* color: #9E9E9E; */
+  color: grey;
 }
 .balance-container {
   height: 2rem;
@@ -331,5 +341,8 @@ export default {
 }
 .service-box .service-box-item p {
   font-size: 1rem;
+}
+.link {
+  text-decoration: none !important;
 }
 </style>

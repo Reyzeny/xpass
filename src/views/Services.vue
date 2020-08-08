@@ -33,6 +33,10 @@ export default {
     };
   },
   created() {
+    if (!this.$route.params.serviceOption) {
+      this.$router.push('/dashboard');
+      return;
+    }
     this.serviceId = this.$route.params.categoryId;
     this.serviceOption = this.$route.params.serviceOption;
     if (this.$route.params.specific) {

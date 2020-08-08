@@ -10,7 +10,7 @@
                     <v-card flat>
                         <v-card-text>
                             <div>
-                                <div class="provider-heading">Select Provider</div>
+                                <p class="provider-heading">Select Your Provider</p>
                                 <div class="d-flex flex-wrap justify-content-start">
                                     <div v-for="(item, index) in tabItem" :key="index" :class="{service_container_selected: selectedItem===item, service_container_unselected: selectedItem!==item}" @click="setSelectedItem(item, index)">
                                         <img class="service_image" :src="item.image_url"/>
@@ -22,8 +22,11 @@
                                     <v-text-field v-if="biller_identifier_name" v-model="biller_identifier" :label="biller_identifier_name" single-line></v-text-field>
                                     <v-text-field v-if="selectedItem" v-model="billing_amount" label="Amount" single-line :readonly="amountReadOnly"></v-text-field>
                                 </div>
+                                <div>
+                                  <p v-if="responseError" class="text-danger text-center">{{ responseErrorMessage }}</p>
+                                </div>
                                 <div class="d-flex flex-row-reverse">
-                                    <v-btn v-if="selectedItem" large color="primary" @click="submitTransaction">Make Payment</v-btn>
+                                    <v-btn v-if="selectedItem" large color="primary" :loading="submitTransactionLoading" :disabled="submitTransactionLoading" @click="submitTransaction">Make Payment</v-btn>
                                 </div>
                             </div>
                         </v-card-text>
@@ -58,6 +61,9 @@ export default {
       biller_identifier_name: '',
       billing_amount: 0,
       amountReadOnly: false,
+      submitTransactionLoading: false,
+      responseError: false,
+      responseErrorMessage: '',
 
       snackbar: false,
       snackbar_text: 'Hello, I\'m a snackbar',
@@ -104,6 +110,7 @@ export default {
       this.biller_identifier_name = '';
       this.billing_amount = 0;
       this.amountReadOnly = false;
+      this.responseError = false;
     },
     setSelectedItem(item) {
       console.log('clicked on ', item);
@@ -140,14 +147,19 @@ export default {
         variation_id: this.selectedVariation.id,
       };
       console.log('transaction data is ', transactionData);
+      this.submitTransactionLoading = true;
       //   return true;
       network.post(routes.createTransaction, transactionData)
         .then((response) => {
           console.log('transaction response is ', response);
+          this.submitTransactionLoading = false;
           this.showPaystack();
         })
         .catch((error) => {
           console.log('transaction error is ', error.response);
+          this.submitTransactionLoading = false;
+          this.responseError = true;
+          this.responseErrorMessage = error.response.data.data;
         });
       return true;
     },
@@ -176,8 +188,8 @@ export default {
     padding: 2%;
 }
 .provider-heading {
+  padding: 1.5rem;
   font-weight: 800;
-  font-size: 1.3rem;
 }
 .service_container_unselected {
   border: 2px solid #EEEEEE;

@@ -7,13 +7,13 @@
                 <!-- <v-img alt="Vuetify Name" class="shrink mt-1 hidden-sm-and-down" contain min-width="100" src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png" width="100"/> -->
             </div>
             <v-spacer></v-spacer>
-            <v-btn href="/" style="color: white;" text>
+            <v-btn class="link" href="/" style="color: white;" text>
                 <span class="mr-2 white-text">Home</span>
             </v-btn>
-            <v-btn href="/login" style="color: white;" text>
+            <v-btn class="link" href="/login" style="color: white;" text>
                 <span class="mr-2 white-text">Login</span>
             </v-btn>
-            <v-btn href="/signup" style="color: white;" text>
+            <v-btn class="link" href="/signup" style="color: white;" text>
                 <span class="mr-2">Signup</span>
             </v-btn>
         </v-app-bar>
@@ -49,5 +49,7 @@ export default {
     color: white !important;
     text-decoration: none !important;
 }
-
+.link {
+    text-decoration: none !important;
+}
 </style>
